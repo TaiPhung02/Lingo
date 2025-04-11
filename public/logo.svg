@@ -1,0 +1,8 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Green rounded square face -->
+  <rect x="40" y="40" width="120" height="120" rx="20" ry="20" fill="#65D78E" />
+  <!-- Adding subtle face elements -->
+  <circle cx="80" cy="85" r="8" fill="#ffffff" opacity="0.4" />
+  <circle cx="120" cy="85" r="8" fill="#ffffff" opacity="0.4" />
+  <path d="M 80,120 Q 100,135 120,120" stroke="#ffffff" stroke-width="4" fill="none" opacity="0.4" />
+</svg>
