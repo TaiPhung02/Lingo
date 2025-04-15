@@ -115,7 +115,7 @@ const main = async () => {
       {
         id: 3,
         challengeId: 1,
-        imageSrc: "/robot.svg",
+        imageSrc: "/bear.svg",
         correct: false,
         text: "la robot",
         audioSrc: "/en_robot.mp3",
