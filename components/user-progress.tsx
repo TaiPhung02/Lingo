@@ -9,14 +9,14 @@ type Props = {
   activeCourse: typeof courses.$inferSelect;
   hearts: number;
   points: number;
-  hasActiveSubsription: boolean;
+  hasActiveSubscription: boolean;
 };
 
 export const UserProgress = ({
   activeCourse,
   hearts,
   points,
-  hasActiveSubsription,
+  hasActiveSubscription,
 }: Props) => {
   return (
     <div className="flex items-center justify-between gap-x-2 w-full">
@@ -55,7 +55,7 @@ export const UserProgress = ({
             className="mr-2"
           />
 
-          {hasActiveSubsription ? (
+          {hasActiveSubscription ? (
             <InfinityIcon className="h-4 w-4 stroke-[3]" />
           ) : (
             hearts
