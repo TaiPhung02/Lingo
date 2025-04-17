@@ -2,12 +2,12 @@ import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 
 import db from "@/db/drizzle";
-import { lessons } from "@/db/schema";
+import { challenges } from "@/db/schema";
 import { getIsAdmin } from "@/lib/admin";
 
 export const GET = async (
   req: Request,
-  { params }: { params: { lessonId: number } }
+  { params }: { params: { challengeId: number } }
 ) => {
   const isAdmin = await getIsAdmin();
 
@@ -17,8 +17,8 @@ export const GET = async (
     });
   }
 
-  const data = await db.query.lessons.findFirst({
-    where: eq(lessons.id, params.lessonId),
+  const data = await db.query.challenges.findFirst({
+    where: eq(challenges.id, params.challengeId),
   });
 
   return NextResponse.json(data);
@@ -26,7 +26,7 @@ export const GET = async (
 
 export const PUT = async (
   req: Request,
-  { params }: { params: { lessonId: number } }
+  { params }: { params: { challengeId: number } }
 ) => {
   const isAdmin = await getIsAdmin();
 
@@ -39,11 +39,11 @@ export const PUT = async (
   const body = await req.json();
 
   const data = await db
-    .update(lessons)
+    .update(challenges)
     .set({
       ...body,
     })
-    .where(eq(lessons.id, params.lessonId))
+    .where(eq(challenges.id, params.challengeId))
     .returning();
 
   return NextResponse.json(data[0]);
@@ -51,7 +51,7 @@ export const PUT = async (
 
 export const DELETE = async (
   req: Request,
-  { params }: { params: { lessonId: number } }
+  { params }: { params: { challengeId: number } }
 ) => {
   const isAdmin = await getIsAdmin();
 
@@ -62,8 +62,8 @@ export const DELETE = async (
   }
 
   const data = await db
-    .delete(lessons)
-    .where(eq(lessons.id, params.lessonId))
+    .delete(challenges)
+    .where(eq(challenges.id, params.challengeId))
     .returning();
 
   return NextResponse.json(data[0]);

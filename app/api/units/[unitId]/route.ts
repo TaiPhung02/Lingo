@@ -17,7 +17,7 @@ export const GET = async (
     });
   }
 
-  const data = await db.query.courses.findFirst({
+  const data = await db.query.units.findFirst({
     where: eq(units.id, params.unitId),
   });
 
