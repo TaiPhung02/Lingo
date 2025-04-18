@@ -15,6 +15,13 @@ export const getRandomCharacter = (): string => {
   return CHARACTERS[Math.floor(Math.random() * CHARACTERS.length)];
 };
 
+function shuffleArray<T>(array: T[]): T[] {
+  return array
+    .map((item) => ({ item, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ item }) => item);
+}
+
 export const createChallengesFromTemplates = (
   templates: Array<{
     type: ChallengeType;
@@ -24,10 +31,8 @@ export const createChallengesFromTemplates = (
   }>,
   voicePath: string = "voice_kr"
 ): Challenge[] => {
-  return templates.map((template) => ({
-    type: template.type,
-    question: template.question,
-    options: [
+  return templates.map((template) => {
+    const allOptions = [
       {
         text: template.correctOption.text,
         correct: true,
@@ -40,6 +45,12 @@ export const createChallengesFromTemplates = (
         audioSrc: `/${voicePath}/${option.audioSuffix}.mp3`,
         imageSrc: getRandomCharacter(),
       })),
-    ],
-  }));
+    ];
+
+    return {
+      type: template.type,
+      question: template.question,
+      options: shuffleArray(allOptions),
+    };
+  });
 };
