@@ -57,7 +57,13 @@ const main = async () => {
 
       for (const [fileName, text] of audioFilesToGenerate.entries()) {
         console.log(`Generating audio for: ${fileName} - "${text}"`);
-        await generateAudio(text, fileName);
+
+        const voiceNames = ["Anna Kim", "Bin"];
+        const randomVoice =
+          voiceNames[Math.floor(Math.random() * voiceNames.length)];
+
+        await generateAudio(text, fileName, randomVoice);
+
         // Thêm độ trễ để tránh quá tải API
         await new Promise((resolve) => setTimeout(resolve, 1000));
       }

@@ -1,12 +1,20 @@
-// lib/audio.ts
 import fs from "fs";
 import path from "path";
 import { Readable } from "stream";
 import { finished } from "stream/promises";
 import { ElevenLabsClient } from "elevenlabs";
 
+// Voice map
+const koreanVoices: Record<string, string> = {
+  "Anna Kim": "uyVNoMrnUku1dZyVEXwD",
+  Bin: "jB1Cifc2UQbq1gR3wnb0",
+};
+
 // Helper: convert stream to file
-export async function streamToFile(stream: Readable, filePath: string): Promise<void> {
+export async function streamToFile(
+  stream: Readable,
+  filePath: string
+): Promise<void> {
   const writeStream = fs.createWriteStream(filePath);
   stream.pipe(writeStream);
   return finished(writeStream);
@@ -14,12 +22,16 @@ export async function streamToFile(stream: Readable, filePath: string): Promise<
 
 // Helper: check if audio file exists
 export const audioFileExists = (audioPath: string): boolean => {
-  const filePath = path.join(process.cwd(), 'public', audioPath);
+  const filePath = path.join(process.cwd(), "public", audioPath);
   return fs.existsSync(filePath);
 };
 
 // Helper: generate audio with ElevenLabs
-export const generateAudio = async (text: string, fileName: string): Promise<boolean> => {
+export const generateAudio = async (
+  text: string,
+  fileName: string,
+  voiceName: string = "Anna Kim" // default voice
+): Promise<boolean> => {
   try {
     const apiKey = process.env.ELEVENLABS_API_KEY;
     if (!apiKey) {
@@ -27,8 +39,13 @@ export const generateAudio = async (text: string, fileName: string): Promise<boo
       return false;
     }
 
+    const voiceId = koreanVoices[voiceName];
+    if (!voiceId) {
+      console.error(`Voice "${voiceName}" not found.`);
+      return false;
+    }
+
     const client = new ElevenLabsClient({ apiKey });
-    const voiceId = "pNInz6obpgDQGcFmaJgB"; // Korean voice
 
     const audioStream = await client.textToSpeech.convert(voiceId, {
       output_format: "mp3_44100_128",
@@ -36,8 +53,8 @@ export const generateAudio = async (text: string, fileName: string): Promise<boo
       model_id: "eleven_multilingual_v2",
       voice_settings: {
         stability: 0.5,
-        similarity_boost: 0.75
-      }
+        similarity_boost: 0.75,
+      },
     });
 
     const publicDir = path.join(process.cwd(), "public");
@@ -46,7 +63,9 @@ export const generateAudio = async (text: string, fileName: string): Promise<boo
 
     await streamToFile(audioStream, filePath);
 
-    console.log(`🎧 Generated audio: /voice_kr/${fileName}.mp3`);
+    console.log(
+      `🎧 Generated audio with ${voiceName}: /voice_kr/${fileName}.mp3`
+    );
     return true;
   } catch (error) {
     console.error(`❌ Error generating audio for ${fileName}:`, error);
