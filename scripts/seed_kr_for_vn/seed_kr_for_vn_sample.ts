@@ -3,14 +3,76 @@ import { drizzle } from "drizzle-orm/neon-http";
 import { neon } from "@neondatabase/serverless";
 import fs from "fs";
 import path from "path";
-
-import { generateAudio, audioFileExists } from "../../lib/audio";
+import { ElevenLabsClient } from "elevenlabs";
+import { Readable } from "stream";
+import { finished } from "stream/promises";
 
 import * as schema from "../../db/schema";
 import { koreanQuizData } from "./korean_quiz_data";
 
 const sql = neon(process.env.DATABASE_URL!);
 const db = drizzle(sql, { schema });
+
+// Helper function to convert Readable stream to file
+async function streamToFile(stream: Readable, filePath: string): Promise<void> {
+  const writeStream = fs.createWriteStream(filePath);
+  stream.pipe(writeStream);
+  return finished(writeStream); // Returns a promise that resolves when the stream finishes
+}
+
+// Hàm kiểm tra xem file audio có tồn tại không
+const audioFileExists = (audioPath: string): boolean => {
+  const filePath = path.join(process.cwd(), "public", audioPath);
+  return fs.existsSync(filePath);
+};
+
+// Hàm tạo file audio sử dụng ElevenLabs SDK
+const generateAudio = async (
+  text: string,
+  fileName: string
+): Promise<boolean> => {
+  try {
+    // ElevenLabs API key from environment variable
+    const apiKey = process.env.ELEVENLABS_API_KEY;
+    if (!apiKey) {
+      console.error("ElevenLabs API key is not configured");
+      return false;
+    }
+
+    // Initialize ElevenLabs client
+    const client = new ElevenLabsClient({
+      apiKey: apiKey,
+    });
+
+    // Voice ID for Korean (use an appropriate voice ID from your ElevenLabs account)
+    const voiceId = "pNInz6obpgDQGcFmaJgB"; // Replace with the appropriate voice ID
+
+    // Generate audio using the elevenlabs SDK - this returns a Readable stream
+    const audioStream = await client.textToSpeech.convert(voiceId, {
+      output_format: "mp3_44100_128",
+      text: text,
+      model_id: "eleven_multilingual_v2",
+      voice_settings: {
+        stability: 0.5,
+        similarity_boost: 0.75,
+      },
+    });
+
+    // Path to save the file
+    const publicDir = path.join(process.cwd(), "public");
+    const voiceDir = path.join(publicDir, "voice_kr");
+    const filePath = path.join(voiceDir, `${fileName}.mp3`);
+
+    // Save the stream directly to a file
+    await streamToFile(audioStream, filePath);
+
+    console.log(`Generated audio: /voice_kr/${fileName}.mp3`);
+    return true;
+  } catch (error) {
+    console.error(`Error generating audio for ${fileName}:`, error);
+    return false;
+  }
+};
 
 const main = async () => {
   try {

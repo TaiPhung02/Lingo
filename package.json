@@ -11,6 +11,7 @@
     "db:push": "npx drizzle-kit push",
     "db:seed": "tsx ./scripts/seed.ts",
     "db:seedKorean": "tsx ./scripts/seed_kr_for_vn/seed_kr_for_vn.ts",
+    "db:seedKoreanSample": "tsx ./scripts/seed_kr_for_vn/seed_kr_for_vn_sample.ts",
     "db:reset": "tsx ./scripts/reset.ts"
   },
   "dependencies": {
@@ -25,6 +26,7 @@
     "clsx": "^2.1.1",
     "dotenv": "^16.5.0",
     "drizzle-orm": "^0.41.0",
+    "elevenlabs": "^1.56.1",
     "lucide-react": "^0.487.0",
     "next": "15.3.0",
     "next-themes": "^0.4.6",
