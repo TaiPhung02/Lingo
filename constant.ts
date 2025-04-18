@@ -10,3 +10,16 @@ export const quests = [
     value: 1000,
   },
 ];
+
+export const CHARACTERS = [
+  "/character/man.svg",
+  "/character/man_2.svg",
+  "/character/man_3.svg",
+  "/character/man_4.svg",
+  "/character/man_5.svg",
+  "/character/woman.svg",
+  "/character/woman_2.svg",
+  "/character/woman_3.svg",
+  "/character/woman_4.svg",
+  "/character/woman_5.svg",
+];
