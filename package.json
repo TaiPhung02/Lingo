@@ -11,7 +11,6 @@
     "db:push": "npx drizzle-kit push",
     "db:seed": "tsx ./scripts/seed.ts",
     "db:seedKorean": "tsx ./scripts/seed_kr_for_vn/seed_kr_for_vn.ts",
-    "db:seedKoreanSample": "tsx ./scripts/seed_kr_for_vn/seed_kr_for_vn_sample.ts",
     "db:reset": "tsx ./scripts/reset.ts"
   },
   "dependencies": {

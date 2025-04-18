@@ -19,7 +19,6 @@ type Props = {
 };
 
 export const Card = ({
-  id,
   imageSrc,
   audioSrc,
   text,
@@ -30,7 +29,7 @@ export const Card = ({
   status,
   type,
 }: Props) => {
-  const [audio, _, controls] = useAudio({ src: audioSrc || "" });
+  const [audio, , controls] = useAudio({ src: audioSrc || "" });
 
   const handleClick = useCallback(() => {
     if (disabled) return;
@@ -55,7 +54,8 @@ export const Card = ({
           "border-rose-300 bg-rose-100 hover:bg-rose-100",
         disabled && "pointer-events-none hover:bg-white",
         type === "ASSIST" && "lg:p-3 w-full"
-      )}>
+      )}
+    >
       {audio}
 
       {imageSrc && (
@@ -68,7 +68,8 @@ export const Card = ({
         className={cn(
           "flex items-center justify-between",
           type === "ASSIST" && "flex-row-reverse"
-        )}>
+        )}
+      >
         {type === "ASSIST" && <div></div>}
 
         <p
@@ -77,7 +78,8 @@ export const Card = ({
             selected && "text-sky-500",
             selected && status === "correct" && "text-green-500",
             selected && status === "wrong" && "text-rose-500"
-          )}>
+          )}
+        >
           {text}
         </p>
 
@@ -89,7 +91,8 @@ export const Card = ({
               status === "correct" &&
               "border-green-500 text-green-500",
             selected && status === "wrong" && "border-rose-500 text-rose-500"
-          )}>
+          )}
+        >
           {shortcut}
         </div>
       </div>

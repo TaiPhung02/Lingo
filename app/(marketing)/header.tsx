@@ -4,9 +4,7 @@ import { Button } from "@/components/ui/button";
 import {
   ClerkLoaded,
   ClerkLoading,
-  ClerkProvider,
   SignInButton,
-  SignUpButton,
   SignedIn,
   SignedOut,
   UserButton,
