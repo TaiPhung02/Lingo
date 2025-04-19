@@ -18,6 +18,7 @@ import { Footer } from "./footer";
 import { QuestionBubble } from "./question-bubble";
 import { Challenge } from "./challenge";
 import { ResultCard } from "./result-card";
+import { HEARTS_AVAILABLE } from "@/constant";
 
 type Props = {
   initialLessonId: number;
@@ -129,7 +130,7 @@ export const Quiz = ({
             setPercentage((prev) => prev + 100 / challenges.length);
 
             if (initialPercentage === 100) {
-              setHearts((prev) => Math.min(prev + 1, 5));
+              setHearts((prev) => Math.min(prev + 1, HEARTS_AVAILABLE));
             }
           })
           .catch(() => toast.error("Something went wrong. Please try again."));

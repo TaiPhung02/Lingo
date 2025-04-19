@@ -6,7 +6,7 @@ import { revalidatePath } from "next/cache";
 import { auth, currentUser } from "@clerk/nextjs/server";
 
 import db from "@/db/drizzle";
-import { POINTS_TO_REFILL } from "@/constant";
+import { HEARTS_AVAILABLE, POINTS_TO_REFILL } from "@/constant";
 import { challengeProgress, challenges, userProgress } from "@/db/schema";
 import {
   getCourseById,
@@ -130,7 +130,7 @@ export const refillHearts = async () => {
     throw new Error("User progress not found");
   }
 
-  if (currentUserProgress.hearts === 5) {
+  if (currentUserProgress.hearts === HEARTS_AVAILABLE) {
     throw new Error("Hearts are already full");
   }
 
@@ -141,7 +141,7 @@ export const refillHearts = async () => {
   await db
     .update(userProgress)
     .set({
-      hearts: 5,
+      hearts: HEARTS_AVAILABLE,
       points: currentUserProgress.points - POINTS_TO_REFILL,
     })
     .where(eq(userProgress.userId, currentUserProgress.userId));
