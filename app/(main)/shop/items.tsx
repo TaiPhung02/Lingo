@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useTransition } from "react";
 
 import { Button } from "@/components/ui/button";
-import { POINTS_TO_REFILL } from "@/constant";
+import { HEARTS_AVAILABLE, POINTS_TO_REFILL } from "@/constant";
 import { refillHearts } from "@/actions/user-progress";
 import { createStripeUrl } from "@/actions/user-subscription";
 
@@ -19,7 +19,7 @@ export const Items = ({ hearts, points, hasActiveSubscription }: Props) => {
   const [pending, startTransition] = useTransition();
 
   const onRefillHearts = () => {
-    if (pending || hearts === 5 || points < POINTS_TO_REFILL) {
+    if (pending || hearts === HEARTS_AVAILABLE || points < POINTS_TO_REFILL) {
       return;
     }
 
@@ -53,9 +53,9 @@ export const Items = ({ hearts, points, hasActiveSubscription }: Props) => {
 
         <Button
           onClick={onRefillHearts}
-          disabled={pending || hearts === 5 || points < POINTS_TO_REFILL}
+          disabled={pending || hearts === 99999 || points < POINTS_TO_REFILL}
         >
-          {hearts === 5 ? (
+          {hearts === 99999 ? (
             "full"
           ) : (
             <div className="flex items-center">
