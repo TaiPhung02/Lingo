@@ -127,9 +127,6 @@ const lesson3: Lesson = {
           { text: "안녕히 가세요", audioSuffix: "annyeonghi_gaseyo" },
         ],
       },
-
-      // 20 câu còn lại - biến tấu nội dung
-
       {
         type: "SELECT",
         question: "Nếu ai đó nói '감사합니다', bạn sẽ trả lời?",
@@ -139,7 +136,7 @@ const lesson3: Lesson = {
         },
         wrongOptions: [
           { text: "아니요", audioSuffix: "aniyo" },
-          { text: "네", audioSuffix: "ne" },
+          { text: "어떻게 지내세요?", audioSuffix: "eotteoke_jinaeseyo" },
         ],
       },
       {
@@ -151,7 +148,7 @@ const lesson3: Lesson = {
         },
         wrongOptions: [
           { text: "감사합니다", audioSuffix: "gamsahamnida" },
-          { text: "천만에요", audioSuffix: "cheonmaneyo" },
+          { text: "고맙습니다", audioSuffix: "gomapseumnida" },
         ],
       },
       {
@@ -187,11 +184,9 @@ const lesson3: Lesson = {
         },
         wrongOptions: [
           { text: "미안해요", audioSuffix: "mianhaeyo" },
-          { text: "감사합니다", audioSuffix: "gamsahamnida" },
+          { text: "미안해", audioSuffix: "mianhae" },
         ],
       },
-
-      // 15 câu cuối
       {
         type: "ASSIST",
         question: "Nghe và chọn nghĩa của '네'",
@@ -237,7 +232,7 @@ const lesson3: Lesson = {
         },
         wrongOptions: [
           { text: "감사합니다", audioSuffix: "gamsahamnida" },
-          { text: "네", audioSuffix: "ne" },
+          { text: "안녕하세요", audioSuffix: "annyeonghaseyo" },
         ],
       },
       {
@@ -252,8 +247,6 @@ const lesson3: Lesson = {
           { text: "네", audioSuffix: "ne" },
         ],
       },
-
-      // Thêm 5 câu nữa để đảm bảo đủ 30
       {
         type: "SELECT",
         question: "Câu nào bạn dùng để bày tỏ biết ơn?",
@@ -268,14 +261,14 @@ const lesson3: Lesson = {
       },
       {
         type: "SELECT",
-        question: "Bạn sẽ dùng câu nào khi tạm biệt ai đó?",
+        question: "Bạn sẽ dùng câu nào khi tạm biệt người ở lại?",
         correctOption: {
           text: "안녕히 계세요",
           audioSuffix: "annyeonghi_gyeseyo",
         },
         wrongOptions: [
+          { text: "안녕히 가세요", audioSuffix: "annyeonghi_gaseyo" },
           { text: "감사합니다", audioSuffix: "gamsahamnida" },
-          { text: "죄송합니다", audioSuffix: "joesonghamnida" },
         ],
       },
       {
@@ -312,6 +305,66 @@ const lesson3: Lesson = {
         wrongOptions: [
           { text: "네", audioSuffix: "ne" },
           { text: "어떻게 지내세요?", audioSuffix: "eotteoke_jinaeseyo" },
+        ],
+      },
+      {
+        type: "SELECT",
+        question: "Bạn sẽ dùng câu nào khi tạm biệt người ra về?",
+        correctOption: {
+          text: "안녕히 가세요",
+          audioSuffix: "annyeonghi_gaseyo",
+        },
+        wrongOptions: [
+          { text: "안녕히 계세요", audioSuffix: "annyeonghi_gyeseyo" },
+          { text: "죄송합니다", audioSuffix: "joesonghamnida" },
+        ],
+      },
+      {
+        type: "ASSIST",
+        question: "Nghe và chọn cách hỏi thăm lịch sự nhất.",
+        correctOption: {
+          text: "어떻게 지내십니까?",
+          audioSuffix: "eotteoke_jinaeshipnikka",
+        },
+        wrongOptions: [
+          { text: "어떻게 지내?", audioSuffix: "eotteoke_jinae" },
+          { text: "어떻게 지내요?", audioSuffix: "eotteoke_jinaeyo" },
+        ],
+      },
+      {
+        type: "SELECT",
+        question: "Đâu KHÔNG phải là câu chào hỏi trong tiếng Hàn?",
+        correctOption: {
+          text: "감사합니다",
+          audioSuffix: "gamsahamnida",
+        },
+        wrongOptions: [
+          { text: "안녕하세요", audioSuffix: "annyeonghaseyo" },
+          { text: "어떻게 지내세요?", audioSuffix: "eotteoke_jinaeseyo" },
+        ],
+      },
+      {
+        type: "ASSIST",
+        question: "Nghe và chọn cách nói 'Cảm ơn' thân mật.",
+        correctOption: {
+          text: "고마워",
+          audioSuffix: "gomawo",
+        },
+        wrongOptions: [
+          { text: "감사합니다", audioSuffix: "gamsahamnida" },
+          { text: "고맙습니다", audioSuffix: "gomapseumnida" },
+        ],
+      },
+      {
+        type: "SELECT",
+        question: "Cách nói 'Không sao đâu' sau khi ai đó xin lỗi là?",
+        correctOption: {
+          text: "괜찮아요",
+          audioSuffix: "gwaenchanhayo",
+        },
+        wrongOptions: [
+          { text: "천만에요", audioSuffix: "cheonmaneyo" },
+          { text: "네", audioSuffix: "ne" },
         ],
       },
     ],

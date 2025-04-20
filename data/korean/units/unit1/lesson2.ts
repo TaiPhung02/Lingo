@@ -2,8 +2,9 @@ import { Lesson } from "@/types/courses";
 import { createChallengesFromTemplates } from "@/lib/utils";
 
 const lesson2: Lesson = {
-  title: "Xin chào và Giới thiệu",
+  title: "Bảng chữ cái Hangul",
   challenges: createChallengesFromTemplates([
+    // 1. Nguyên âm cơ bản
     {
       type: "SELECT",
       question: "Chữ cái nào là nguyên âm cơ bản trong Hangul?",
@@ -24,11 +25,11 @@ const lesson2: Lesson = {
     },
     {
       type: "SELECT",
-      question: "Chữ cái nào là phụ âm?",
-      correctOption: { text: "ㄴ", audioSuffix: "n" },
+      question: "Nguyên âm nào được phát âm là 'eo'?",
+      correctOption: { text: "ㅓ", audioSuffix: "eo" },
       wrongOptions: [
-        { text: "ㅐ", audioSuffix: "ae" },
-        { text: "ㅓ", audioSuffix: "eo" },
+        { text: "ㅗ", audioSuffix: "o" },
+        { text: "ㅏ", audioSuffix: "a" },
       ],
     },
     {
@@ -37,124 +38,7 @@ const lesson2: Lesson = {
       correctOption: { text: "ㅜ", audioSuffix: "u" },
       wrongOptions: [
         { text: "ㅡ", audioSuffix: "eu" },
-        { text: "ㅣ", audioSuffix: "i" },
-      ],
-    },
-    {
-      type: "SELECT",
-      question: "Chữ nào sau đây phát âm là 'm'?",
-      correctOption: { text: "ㅁ", audioSuffix: "m" },
-      wrongOptions: [
-        { text: "ㄹ", audioSuffix: "r" },
-        { text: "ㅈ", audioSuffix: "j" },
-      ],
-    },
-    {
-      type: "SELECT",
-      question: "Cặp ghép nào tạo thành âm 'ma'?",
-      correctOption: { text: "ㅁ + ㅏ = 마", audioSuffix: "ma" },
-      wrongOptions: [
-        { text: "ㅁ + ㅓ = 머", audioSuffix: "meo" },
-        { text: "ㅁ + ㅗ = 모", audioSuffix: "mo" },
-      ],
-    },
-    {
-      type: "ASSIST",
-      question: "Điền vào chỗ trống: 'ㅂ' phát âm là ___",
-      correctOption: { text: "b", audioSuffix: "b" },
-      wrongOptions: [
-        { text: "d", audioSuffix: "d" },
-        { text: "m", audioSuffix: "m" },
-      ],
-    },
-    {
-      type: "SELECT",
-      question: "Ký tự nào là nguyên âm thẳng đứng?",
-      correctOption: { text: "ㅣ", audioSuffix: "i" },
-      wrongOptions: [
-        { text: "ㅡ", audioSuffix: "eu" },
-        { text: "ㅜ", audioSuffix: "u" },
-      ],
-    },
-    {
-      type: "ASSIST",
-      question: "Điền vào chỗ trống: 'ㅊ + ㅏ = ___'",
-      correctOption: { text: "차", audioSuffix: "cha" },
-      wrongOptions: [
-        { text: "자", audioSuffix: "ja" },
-        { text: "카", audioSuffix: "ka" },
-      ],
-    },
-    {
-      type: "SELECT",
-      question: "Phát âm của 'ㅎ' là gì?",
-      correctOption: { text: "h", audioSuffix: "h" },
-      wrongOptions: [
-        { text: "n", audioSuffix: "n" },
-        { text: "s", audioSuffix: "s" },
-      ],
-    },
-    {
-      type: "SELECT",
-      question: "Chữ ghép nào phát âm là 'no'?",
-      correctOption: { text: "ㄴ + ㅗ = 노", audioSuffix: "no" },
-      wrongOptions: [
-        { text: "ㄴ + ㅜ = 누", audioSuffix: "nu" },
-        { text: "ㄴ + ㅏ = 나", audioSuffix: "na" },
-      ],
-    },
-    {
-      type: "ASSIST",
-      question: "Điền vào chỗ trống: 'ㄱ + ㅜ = ___'",
-      correctOption: { text: "구", audioSuffix: "gu" },
-      wrongOptions: [
-        { text: "고", audioSuffix: "go" },
-        { text: "가", audioSuffix: "ga" },
-      ],
-    },
-    {
-      type: "SELECT",
-      question: "Phụ âm nào có âm gần giống 'ch'?",
-      correctOption: { text: "ㅊ", audioSuffix: "ch" },
-      wrongOptions: [
-        { text: "ㅈ", audioSuffix: "j" },
-        { text: "ㅋ", audioSuffix: "k" },
-      ],
-    },
-    {
-      type: "ASSIST",
-      question: "Điền vào chỗ trống: 'ㅅ' phát âm là ___",
-      correctOption: { text: "s", audioSuffix: "s" },
-      wrongOptions: [
-        { text: "t", audioSuffix: "t" },
-        { text: "p", audioSuffix: "p" },
-      ],
-    },
-    {
-      type: "SELECT",
-      question: "Nguyên âm nào đọc là 'eo'?",
-      correctOption: { text: "ㅓ", audioSuffix: "eo" },
-      wrongOptions: [
         { text: "ㅗ", audioSuffix: "o" },
-        { text: "ㅏ", audioSuffix: "a" },
-      ],
-    },
-    {
-      type: "SELECT",
-      question: "Tổ hợp nào phát âm là 'ba'?",
-      correctOption: { text: "ㅂ + ㅏ = 바", audioSuffix: "ba" },
-      wrongOptions: [
-        { text: "ㅍ + ㅏ = 파", audioSuffix: "pa" },
-        { text: "ㅁ + ㅏ = 마", audioSuffix: "ma" },
-      ],
-    },
-    {
-      type: "ASSIST",
-      question: "Điền vào chỗ trống: 'ㄷ' phát âm là ___",
-      correctOption: { text: "d", audioSuffix: "d" },
-      wrongOptions: [
-        { text: "t", audioSuffix: "t" },
-        { text: "l", audioSuffix: "l" },
       ],
     },
     {
@@ -163,25 +47,119 @@ const lesson2: Lesson = {
       correctOption: { text: "eu", audioSuffix: "eu" },
       wrongOptions: [
         { text: "u", audioSuffix: "u" },
-        { text: "i", audioSuffix: "i" },
+        { text: "o", audioSuffix: "o" },
       ],
     },
     {
       type: "ASSIST",
-      question: "Điền vào chỗ trống: 'ㅇ + ㅣ = ___'",
-      correctOption: { text: "이", audioSuffix: "i" },
+      question: "Điền vào chỗ trống: Nguyên âm thẳng đứng trong Hangul là ___",
+      correctOption: { text: "ㅣ", audioSuffix: "i" },
       wrongOptions: [
-        { text: "우", audioSuffix: "u" },
-        { text: "오", audioSuffix: "o" },
+        { text: "ㅡ", audioSuffix: "eu" },
+        { text: "ㅜ", audioSuffix: "u" },
+      ],
+    },
+
+    // 2. Phụ âm cơ bản
+    {
+      type: "SELECT",
+      question: "Chữ cái nào là phụ âm trong Hangul?",
+      correctOption: { text: "ㄴ", audioSuffix: "n" },
+      wrongOptions: [
+        { text: "ㅐ", audioSuffix: "ae" },
+        { text: "ㅓ", audioSuffix: "eo" },
+      ],
+    },
+    {
+      type: "ASSIST",
+      question: "Điền vào chỗ trống: 'ㄱ' phát âm là ___",
+      correctOption: { text: "g/k", audioSuffix: "giyeok" },
+      wrongOptions: [
+        { text: "d/t", audioSuffix: "digeut" },
+        { text: "b/p", audioSuffix: "bieup" },
       ],
     },
     {
       type: "SELECT",
-      question: "Chữ nào sau đây bắt đầu bằng phụ âm 'ㅈ'?",
-      correctOption: { text: "자", audioSuffix: "ja" },
+      question: "Phụ âm nào phát âm là 'm'?",
+      correctOption: { text: "ㅁ", audioSuffix: "m" },
       wrongOptions: [
-        { text: "가", audioSuffix: "ga" },
-        { text: "나", audioSuffix: "na" },
+        { text: "ㄹ", audioSuffix: "r_l" },
+        { text: "ㅈ", audioSuffix: "j" },
+      ],
+    },
+    {
+      type: "ASSIST",
+      question: "Điền vào chỗ trống: 'ㄷ' phát âm là ___",
+      correctOption: { text: "d/t", audioSuffix: "digeut" },
+      wrongOptions: [
+        { text: "g/k", audioSuffix: "giyeok" },
+        { text: "r/l", audioSuffix: "rieul" },
+      ],
+    },
+    {
+      type: "SELECT",
+      question: "Phụ âm 'ㄹ' phát âm gần với âm nào trong tiếng Việt?",
+      correctOption: { text: "r/l", audioSuffix: "rieul" },
+      wrongOptions: [
+        { text: "n", audioSuffix: "nieun" },
+        { text: "m", audioSuffix: "mieum" },
+      ],
+    },
+    {
+      type: "ASSIST",
+      question: "Điền vào chỗ trống: 'ㅂ' phát âm là ___",
+      correctOption: { text: "b/p", audioSuffix: "bieup" },
+      wrongOptions: [
+        { text: "d/t", audioSuffix: "digeut" },
+        { text: "j", audioSuffix: "jieut" },
+      ],
+    },
+
+    // 3. Phụ âm nâng cao
+    {
+      type: "SELECT",
+      question: "Phụ âm nào phát âm là 's'?",
+      correctOption: { text: "ㅅ", audioSuffix: "s" },
+      wrongOptions: [
+        { text: "ㅈ", audioSuffix: "j" },
+        { text: "ㅊ", audioSuffix: "ch" },
+      ],
+    },
+    {
+      type: "ASSIST",
+      question: "Điền vào chỗ trống: 'ㅇ' ở đầu từ phát âm là ___",
+      correctOption: { text: "im lặng", audioSuffix: "silent" },
+      wrongOptions: [
+        { text: "ng", audioSuffix: "ng" },
+        { text: "y", audioSuffix: "y" },
+      ],
+    },
+    {
+      type: "SELECT",
+      question: "Phụ âm nào phát âm là 'j/ch'?",
+      correctOption: { text: "ㅈ", audioSuffix: "j" },
+      wrongOptions: [
+        { text: "ㅅ", audioSuffix: "s" },
+        { text: "ㅎ", audioSuffix: "h" },
+      ],
+    },
+    {
+      type: "ASSIST",
+      question: "Điền vào chỗ trống: 'ㅊ' phát âm là ___",
+      correctOption: { text: "ch", audioSuffix: "ch" },
+      wrongOptions: [
+        { text: "j", audioSuffix: "j" },
+        { text: "k", audioSuffix: "k" },
+      ],
+    },
+    {
+      type: "SELECT",
+      question: "Phụ âm nào là phiên bản mạnh của 'k'?",
+      correctOption: { text: "ㅋ", audioSuffix: "k" },
+      wrongOptions: [
+        { text: "ㄱ", audioSuffix: "g" },
+        { text: "ㅌ", audioSuffix: "t" },
       ],
     },
     {
@@ -189,89 +167,120 @@ const lesson2: Lesson = {
       question: "Điền vào chỗ trống: 'ㅌ' phát âm là ___",
       correctOption: { text: "t", audioSuffix: "t" },
       wrongOptions: [
-        { text: "k", audioSuffix: "k" },
         { text: "p", audioSuffix: "p" },
+        { text: "k", audioSuffix: "k" },
       ],
     },
+
+    // 4. Cách ghép vần
     {
       type: "SELECT",
-      question: "Phụ âm nào có âm gần giống 'k'?",
-      correctOption: { text: "ㅋ", audioSuffix: "k" },
+      question: "Kết hợp nào tạo thành chữ 'ga'?",
+      correctOption: { text: "ㄱ + ㅏ = 가", audioSuffix: "ga" },
       wrongOptions: [
-        { text: "ㅈ", audioSuffix: "j" },
-        { text: "ㅎ", audioSuffix: "h" },
+        { text: "ㄱ + ㅓ = 거", audioSuffix: "geo" },
+        { text: "ㄴ + ㅏ = 나", audioSuffix: "na" },
       ],
     },
     {
       type: "ASSIST",
-      question: "Điền vào chỗ trống: 'ㅍ' phát âm là ___",
-      correctOption: { text: "p", audioSuffix: "p" },
+      question: "Điền vào chỗ trống: 'ㄴ + ㅏ = ___'",
+      correctOption: { text: "나", audioSuffix: "na" },
       wrongOptions: [
-        { text: "b", audioSuffix: "b" },
-        { text: "f", audioSuffix: "f" },
+        { text: "마", audioSuffix: "ma" },
+        { text: "라", audioSuffix: "ra" },
       ],
     },
     {
       type: "SELECT",
-      question: "Kết hợp nào tạo thành '하' (ha)?",
-      correctOption: { text: "ㅎ + ㅏ", audioSuffix: "ha" },
+      question: "Chữ '서' được tạo thành từ những âm nào?",
+      correctOption: { text: "ㅅ + ㅓ", audioSuffix: "seo" },
       wrongOptions: [
-        { text: "ㅎ + ㅗ", audioSuffix: "ho" },
-        { text: "ㅎ + ㅜ", audioSuffix: "hu" },
+        { text: "ㅅ + ㅗ", audioSuffix: "so" },
+        { text: "ㅅ + ㅜ", audioSuffix: "su" },
       ],
     },
     {
       type: "ASSIST",
-      question: "Điền vào chỗ trống: 'ㄹ' phát âm là ___",
-      correctOption: { text: "r/l", audioSuffix: "rieul" },
+      question: "Điền vào chỗ trống: 'ㅁ + ㅜ = ___'",
+      correctOption: { text: "무", audioSuffix: "mu" },
       wrongOptions: [
-        { text: "n", audioSuffix: "n" },
-        { text: "m", audioSuffix: "m" },
+        { text: "모", audioSuffix: "mo" },
+        { text: "마", audioSuffix: "ma" },
       ],
     },
     {
       type: "SELECT",
-      question: "Nguyên âm nào là âm đứng ngang?",
-      correctOption: { text: "ㅡ", audioSuffix: "eu" },
+      question: "Kết hợp nào tạo thành chữ 'ho'?",
+      correctOption: { text: "ㅎ + ㅗ = 호", audioSuffix: "ho" },
       wrongOptions: [
-        { text: "ㅏ", audioSuffix: "a" },
-        { text: "ㅣ", audioSuffix: "i" },
+        { text: "ㅎ + ㅜ = 후", audioSuffix: "hu" },
+        { text: "ㅎ + ㅏ = 하", audioSuffix: "ha" },
       ],
     },
     {
       type: "ASSIST",
-      question: "Điền vào chỗ trống: 'ㅈ + ㅏ = ___'",
-      correctOption: { text: "자", audioSuffix: "ja" },
+      question: "Điền vào chỗ trống: 'ㅈ + ㅗ = ___'",
+      correctOption: { text: "조", audioSuffix: "jo" },
       wrongOptions: [
-        { text: "차", audioSuffix: "cha" },
-        { text: "가", audioSuffix: "ga" },
+        { text: "저", audioSuffix: "jeo" },
+        { text: "자", audioSuffix: "ja" },
       ],
     },
+
+    // 5. Thực hành đọc và viết
     {
       type: "SELECT",
-      question: "Chữ cái nào không phải là phụ âm?",
-      correctOption: { text: "ㅗ", audioSuffix: "o" },
+      question: "Chữ nào được đọc là 'i'?",
+      correctOption: { text: "이", audioSuffix: "i" },
       wrongOptions: [
-        { text: "ㄷ", audioSuffix: "d" },
-        { text: "ㅂ", audioSuffix: "b" },
+        { text: "어", audioSuffix: "eo" },
+        { text: "우", audioSuffix: "u" },
       ],
     },
     {
       type: "ASSIST",
-      question: "Điền vào chỗ trống: 'ㅣ' phát âm là ___",
-      correctOption: { text: "i", audioSuffix: "i" },
+      question: "Điền vào chỗ trống: '___' đọc là 'ne'",
+      correctOption: { text: "네", audioSuffix: "ne" },
       wrongOptions: [
-        { text: "u", audioSuffix: "u" },
-        { text: "eo", audioSuffix: "eo" },
+        { text: "내", audioSuffix: "nae" },
+        { text: "노", audioSuffix: "no" },
       ],
     },
     {
       type: "SELECT",
-      question: "Chữ ghép nào phát âm là 'seo'?",
-      correctOption: { text: "ㅅ + ㅓ = 서", audioSuffix: "seo" },
+      question: "Âm thanh nào đọc là 'mi'?",
+      correctOption: { text: "미", audioSuffix: "mi" },
       wrongOptions: [
-        { text: "ㅅ + ㅏ = 사", audioSuffix: "sa" },
-        { text: "ㅅ + ㅗ = 소", audioSuffix: "so" },
+        { text: "마", audioSuffix: "ma" },
+        { text: "무", audioSuffix: "mu" },
+      ],
+    },
+    {
+      type: "ASSIST",
+      question: "Điền vào chỗ trống: '___' đọc là 'bu'",
+      correctOption: { text: "부", audioSuffix: "bu" },
+      wrongOptions: [
+        { text: "바", audioSuffix: "ba" },
+        { text: "비", audioSuffix: "bi" },
+      ],
+    },
+    {
+      type: "SELECT",
+      question: "Từ nào được đọc là 'hana' (một)?",
+      correctOption: { text: "하나", audioSuffix: "hana" },
+      wrongOptions: [
+        { text: "하마", audioSuffix: "hama" },
+        { text: "하다", audioSuffix: "hada" },
+      ],
+    },
+    {
+      type: "ASSIST",
+      question: "Điền vào chỗ trống: '안녕하___' (annyeonghaseyo - xin chào)",
+      correctOption: { text: "세요", audioSuffix: "seyo" },
+      wrongOptions: [
+        { text: "시오", audioSuffix: "sio" },
+        { text: "사요", audioSuffix: "sayo" },
       ],
     },
   ]),
