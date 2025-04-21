@@ -11,10 +11,6 @@ export function absoluteUrl(path: string) {
   return `${process.env.NEXT_PUBLIC_APP_URL}${path}`;
 }
 
-export const getRandomCharacter = (): string => {
-  return CHARACTERS[Math.floor(Math.random() * CHARACTERS.length)];
-};
-
 function shuffleArray<T>(array: T[]): T[] {
   return array
     .map((item) => ({ item, sort: Math.random() }))
@@ -32,18 +28,24 @@ export const createChallengesFromTemplates = (
   voicePath: string = "voice_kr"
 ): Challenge[] => {
   return templates.map((template) => {
+    const totalOptions = 1 + template.wrongOptions.length;
+    const uniqueCharacters = shuffleArray([...CHARACTERS]).slice(
+      0,
+      totalOptions
+    );
+
     const allOptions = [
       {
         text: template.correctOption.text,
         correct: true,
         audioSrc: `/${voicePath}/${template.correctOption.audioSuffix}.mp3`,
-        imageSrc: getRandomCharacter(),
+        imageSrc: uniqueCharacters[0],
       },
-      ...template.wrongOptions.map((option) => ({
+      ...template.wrongOptions.map((option, index) => ({
         text: option.text,
         correct: false,
         audioSrc: `/${voicePath}/${option.audioSuffix}.mp3`,
-        imageSrc: getRandomCharacter(),
+        imageSrc: uniqueCharacters[index + 1],
       })),
     ];
 

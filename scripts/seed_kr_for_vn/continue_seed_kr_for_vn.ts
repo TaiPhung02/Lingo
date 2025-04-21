@@ -59,7 +59,7 @@ const main = async () => {
       for (const [fileName, text] of audioFilesToGenerate.entries()) {
         console.log(`Generating audio for: ${fileName} - "${text}"`);
 
-        const voiceNames = ["Anna Kim", "Bin"];
+        const voiceNames = ["Anna Kim", "Bin", "Min ho"];
         const randomVoice =
           voiceNames[Math.floor(Math.random() * voiceNames.length)];
 

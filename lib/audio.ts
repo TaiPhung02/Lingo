@@ -8,6 +8,7 @@ import { ElevenLabsClient } from "elevenlabs";
 const koreanVoices: Record<string, string> = {
   "Anna Kim": "uyVNoMrnUku1dZyVEXwD",
   Bin: "jB1Cifc2UQbq1gR3wnb0",
+  "Min ho": "U1cJYS4EdbaHmfR7YzHd",
 };
 
 // Helper: convert stream to file
