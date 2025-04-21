@@ -1,70 +1,63 @@
+import { NextRequest, NextResponse } from "next/server";
 import { eq } from "drizzle-orm";
-import { NextResponse } from "next/server";
 
 import db from "@/db/drizzle";
 import { challengeOptions } from "@/db/schema";
 import { getIsAdmin } from "@/lib/admin";
 
-export const GET = async (
-  req: Request,
-  { params }: { params: { challengeOptionId: number } }
-) => {
-  const isAdmin = await getIsAdmin();
+// Helper: lấy param từ URL
+const getChallengeOptionIdFromRequest = (req: NextRequest) => {
+  const url = new URL(req.url);
+  const parts = url.pathname.split("/");
+  const id = parts[parts.length - 1];
+  return parseInt(id, 10);
+};
 
+export async function GET(req: NextRequest) {
+  const isAdmin = await getIsAdmin();
   if (!isAdmin) {
-    return new NextResponse("Unauthorized", {
-      status: 401,
-    });
+    return new NextResponse("Unauthorized", { status: 401 });
   }
 
+  const challengeOptionId = getChallengeOptionIdFromRequest(req);
+
   const data = await db.query.challengeOptions.findFirst({
-    where: eq(challengeOptions.id, params.challengeOptionId),
+    where: eq(challengeOptions.id, challengeOptionId),
   });
 
   return NextResponse.json(data);
-};
+}
 
-export const PUT = async (
-  req: Request,
-  { params }: { params: { challengeOptionId: number } }
-) => {
+export async function PUT(req: NextRequest) {
   const isAdmin = await getIsAdmin();
-
   if (!isAdmin) {
-    return new NextResponse("Unauthorized", {
-      status: 401,
-    });
+    return new NextResponse("Unauthorized", { status: 401 });
   }
 
+  const challengeOptionId = getChallengeOptionIdFromRequest(req);
   const body = await req.json();
 
   const data = await db
     .update(challengeOptions)
-    .set({
-      ...body,
-    })
-    .where(eq(challengeOptions.id, params.challengeOptionId))
+    .set(body)
+    .where(eq(challengeOptions.id, challengeOptionId))
     .returning();
 
   return NextResponse.json(data[0]);
-};
+}
 
-export const DELETE = async (
-  req: Request,
-  { params }: { params: { challengeOptionId: number } }
-) => {
+export async function DELETE(req: NextRequest) {
   const isAdmin = await getIsAdmin();
-
   if (!isAdmin) {
-    return new NextResponse("Unauthorized", {
-      status: 401,
-    });
+    return new NextResponse("Unauthorized", { status: 401 });
   }
+
+  const challengeOptionId = getChallengeOptionIdFromRequest(req);
 
   const data = await db
     .delete(challengeOptions)
-    .where(eq(challengeOptions.id, params.challengeOptionId))
+    .where(eq(challengeOptions.id, challengeOptionId))
     .returning();
 
   return NextResponse.json(data[0]);
-};
+}

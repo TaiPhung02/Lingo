@@ -1,17 +1,20 @@
 import { redirect } from "next/navigation";
-
 import { getLesson, getUserProgress, getUserSubscription } from "@/db/queries";
-
 import { Quiz } from "../quiz";
 
+// Kiểu Props sử dụng Promise cho params
 type Props = {
-  params: {
-    lessonId: number;
-  };
+  params: Promise<{
+    lessonId: string;
+  }>;
 };
 
 const LessonIdPage = async ({ params }: Props) => {
-  const lessonData = getLesson(params.lessonId);
+  const resolvedParams = await params; // Giải quyết Promise cho params
+
+  const lessonId = parseInt(resolvedParams.lessonId, 10);
+
+  const lessonData = getLesson(lessonId);
   const userProgressData = getUserProgress();
   const userSubscriptionData = getUserSubscription();
 

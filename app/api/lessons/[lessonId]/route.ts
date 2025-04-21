@@ -1,70 +1,63 @@
 import { eq } from "drizzle-orm";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 import db from "@/db/drizzle";
 import { lessons } from "@/db/schema";
 import { getIsAdmin } from "@/lib/admin";
 
-export const GET = async (
-  req: Request,
-  { params }: { params: { lessonId: number } }
-) => {
-  const isAdmin = await getIsAdmin();
+// Helper: Lấy lessonId từ URL
+const getLessonIdFromRequest = (req: NextRequest) => {
+  const url = new URL(req.url);
+  const parts = url.pathname.split("/");
+  const id = parts[parts.length - 1];
+  return parseInt(id, 10);
+};
 
+export async function GET(req: NextRequest) {
+  const isAdmin = await getIsAdmin();
   if (!isAdmin) {
-    return new NextResponse("Unauthorized", {
-      status: 401,
-    });
+    return new NextResponse("Unauthorized", { status: 401 });
   }
 
+  const lessonId = getLessonIdFromRequest(req);
+
   const data = await db.query.lessons.findFirst({
-    where: eq(lessons.id, params.lessonId),
+    where: eq(lessons.id, lessonId),
   });
 
   return NextResponse.json(data);
-};
+}
 
-export const PUT = async (
-  req: Request,
-  { params }: { params: { lessonId: number } }
-) => {
+export async function PUT(req: NextRequest) {
   const isAdmin = await getIsAdmin();
-
   if (!isAdmin) {
-    return new NextResponse("Unauthorized", {
-      status: 401,
-    });
+    return new NextResponse("Unauthorized", { status: 401 });
   }
 
+  const lessonId = getLessonIdFromRequest(req);
   const body = await req.json();
 
   const data = await db
     .update(lessons)
-    .set({
-      ...body,
-    })
-    .where(eq(lessons.id, params.lessonId))
+    .set({ ...body })
+    .where(eq(lessons.id, lessonId))
     .returning();
 
   return NextResponse.json(data[0]);
-};
+}
 
-export const DELETE = async (
-  req: Request,
-  { params }: { params: { lessonId: number } }
-) => {
+export async function DELETE(req: NextRequest) {
   const isAdmin = await getIsAdmin();
-
   if (!isAdmin) {
-    return new NextResponse("Unauthorized", {
-      status: 401,
-    });
+    return new NextResponse("Unauthorized", { status: 401 });
   }
+
+  const lessonId = getLessonIdFromRequest(req);
 
   const data = await db
     .delete(lessons)
-    .where(eq(lessons.id, params.lessonId))
+    .where(eq(lessons.id, lessonId))
     .returning();
 
   return NextResponse.json(data[0]);
-};
+}
